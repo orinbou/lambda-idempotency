@@ -5,9 +5,9 @@ AWS Lambda sample code for implementing idempotency.
 
 残念ながらAWS Lambdaでは発火イベントが意図せず複数回発生してしまうことがあります。
 
-![alt text](assets/image-lambda-at_least_once.png)
-
 [【AWS Black Belt Online Seminar】Serverless モニタリング 【P.48】から抜粋](https://pages.awscloud.com/rs/112-TZM-766/images/20190820_AWS-Blackbelt_Serverless_Monitoring.pdf#page=48)
+
+![alt text](assets/image-lambda-at_least_once.png)
 
 その結果、処理中／処理済データを処理しようとして次のような問題が発生してしまいます。
 
