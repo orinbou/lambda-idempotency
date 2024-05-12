@@ -28,11 +28,19 @@ STATUS_RUNNING = 'running'
 STATUS_SUCCESS = 'success'
 STATUS_ERROR = 'error'
 
+# TTL（Time to Live）定義（秒）
+TTL_SECONDS_VALUE = 24 * 60 * 60
+
+# UNIXエポック時間形式（秒）TTL値取得
+def get_ttl_unix_epoch_time():
+    return int((datetime.datetime.now(tz=tz.gettz('Asia/Tokyo')) + datetime.timedelta(seconds=TTL_SECONDS_VALUE)).timestamp())
+
 # 開始ステータス登録
 def write_start_status(status):
     try:
         status['Status'] = STATUS_RUNNING
         status['CreatedAt'] = datetime.datetime.now(tz=tz.gettz('Asia/Tokyo')).strftime('%Y-%m-%d %H:%M:%S')
+        status['ExpireTTL'] = get_ttl_unix_epoch_time()
         status['Histories'] = [
             {
                 'CreatedAt': status['CreatedAt'],
@@ -57,6 +65,7 @@ def write_start_status(status):
 def write_final_status(status):
     try:
         status['CreatedAt'] = datetime.datetime.now(tz=tz.gettz('Asia/Tokyo')).strftime('%Y-%m-%d %H:%M:%S')
+        status['ExpireTTL'] = get_ttl_unix_epoch_time()
         # DB更新
         dynamo_table.update_item(
             Key={

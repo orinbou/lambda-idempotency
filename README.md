@@ -28,6 +28,14 @@ AWS Lambda sample code for implementing idempotency.
 
 ![alt text](assets/image-dynamodb-table.png)
 
+## TTL（Time to Live）
+
+DynamoDBテーブルのイベントデータはTTL設定により一定時間経過後に自動削除されます。
+
+![alt text](assets/image-dynamodb-ttl.png)
+
+但し、TTL設定によるデータ削除のタイミングは、それほど厳密ではないことに注意してください。古いAWSドキュメントには「最大48時間」という記載があったようですが現在はありません。[AWS re:Post に記載された新しい情報](https://repost.aws/ja/knowledge-center/dynamodb-expired-ttl-not-deleted)では「通常、期限切れの項目を数日以内に削除します」と記載されています。今回の試行では平均10分強程で削除されていました。（※参考値）
+
 ## テストデータ
 
 テスト実行に用いたイベントデータは次のとおりです。
@@ -67,6 +75,8 @@ END RequestId: 50d363b4-b6ab-48d2-843d-aab3a0043aec
 
 ## 参考
 
+### 冪等性
+
 * https://pages.awscloud.com/rs/112-TZM-766/images/20190820_AWS-Blackbelt_Serverless_Monitoring.pdf
 * https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/best-practices.html
 * https://repost.aws/ja/knowledge-center/lambda-function-idempotent
@@ -74,3 +84,10 @@ END RequestId: 50d363b4-b6ab-48d2-843d-aab3a0043aec
 * https://www.sunnycloud.jp/column/20221110/
 * https://it-ouji.com/2021/10/24/aws-dynamodb%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6lambda%E3%81%AE%E5%86%AA%E7%AD%89%E6%80%A7%E3%82%92%E5%AE%9F%E8%A3%85%E3%81%99%E3%82%8B/
 * https://zenn.dev/enven/articles/041ab29a69b3ce
+
+### TTL
+
+* https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/time-to-live-ttl-how-to.html
+* https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/TTL.html
+* https://repost.aws/ja/knowledge-center/dynamodb-expired-ttl-not-deleted
+* https://note.com/taro1212/n/n03b60ed03304
