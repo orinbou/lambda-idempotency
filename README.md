@@ -75,7 +75,7 @@ END RequestId: 50d363b4-b6ab-48d2-843d-aab3a0043aec
 
 ## 参考
 
-### 冪等性
+#### 冪等性
 
 * https://pages.awscloud.com/rs/112-TZM-766/images/20190820_AWS-Blackbelt_Serverless_Monitoring.pdf
 * https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/best-practices.html
@@ -85,7 +85,7 @@ END RequestId: 50d363b4-b6ab-48d2-843d-aab3a0043aec
 * https://it-ouji.com/2021/10/24/aws-dynamodb%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6lambda%E3%81%AE%E5%86%AA%E7%AD%89%E6%80%A7%E3%82%92%E5%AE%9F%E8%A3%85%E3%81%99%E3%82%8B/
 * https://zenn.dev/enven/articles/041ab29a69b3ce
 
-### TTL
+#### TTL
 
 * https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/time-to-live-ttl-how-to.html
 * https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/TTL.html
